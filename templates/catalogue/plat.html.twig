@@ -3,18 +3,35 @@
 {% block title %}Tous les Plats{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+ <img src="{{ asset ('/img/images_the_district/bg1.jpeg/') }}" width="100%" height="350px">
+      <br><br><br>
+<p class="text-center fs-1 fw-bold text-black text-decoration-underline">Tous les Plats:</p>
+<div class="container">
+  <div class="row">
+  {% for plat in plats %}
+  <div class="card mb-3 col-sm-12 col-lg-3" style="max-width: 600px;">
+                  <div class="row g-0">
+                  <div class="imgg col-md-4">
+               <img src="{{ asset ('/img/food/' ~ plat.image) }}"class="img-fluid rounded-start" alt="{{ plat.libelle }}" style="height:50%" width="100%">
+                 </div>
+                   <div class="col-md-8">
+                <div class="card-body">
+                 <h5 class="card-title fs-2 text fw-semibold text-black text-decoration-underline">{{ plat.libelle }}</h5>
+                  <p class="card-text fs-4 text text-black text-decoration-none"> {{ plat.description }}</p>
+                   <p class="card-text fs-3 fw-semibold text-black">Prix :<p class="fs-3 fw-semibold text-black"> {{ plat.prix }} €</p></p>
+                      <form action="commande.php" methode="GET">
+                      <button type="submit" name="bouton" class="btn js-4" value="'" >Commander </button>
+                      </form>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/juju/Bureau/MSDA/The-District/src/Controller/CatalogueController.php</code></li>
-        <li>Your template at <code>/home/juju/Bureau/MSDA/The-District/templates/catalogue/index.html.twig</code></li>
-    </ul>
-</div>
+                
+              </a>
+                 </div>
+                 
+    </div>
+              </div>
+              </div>
+    {% endfor %}
+              </div>
+    </div>
+        <br>
 {% endblock %}

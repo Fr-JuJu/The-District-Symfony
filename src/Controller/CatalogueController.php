@@ -37,7 +37,7 @@ class CatalogueController extends AbstractController
     {
         $plats = $this->platRepository->findAll();
 
-        return $this->render('catalogue/index.html.twig', [
+        return $this->render('catalogue/plat.html.twig', [
             'controller_name' => 'CatalogueController',
             'plats' => $plats,
         ]);
@@ -91,3 +91,4 @@ class CatalogueController extends AbstractController
         ]);
     }
 }
+

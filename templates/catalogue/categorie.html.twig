@@ -3,18 +3,22 @@
 {% block title %}Catégories{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/juju/Bureau/MSDA/The-District/src/Controller/CatalogueController.php</code></li>
-        <li>Your template at <code>/home/juju/Bureau/MSDA/The-District/templates/catalogue/index.html.twig</code></li>
-    </ul>
+<img src="{{ asset ('/img/images_the_district/bg2.jpeg/') }}" height="380px" width="100%">
+      <div class="bordure"> <p class=""></p> </div>
+      <br>
+      <br>
+            <div class="page">
+            <div class="container ">
+            <div class="row ">
+{% for categorie in categories %}
+            <div class="col-sm-12 col-lg-4">
+            <a href="{{ path ('app_catplat', {categorie_id: categorie.id} ) }}">
+            <img src="{{ asset ('/img/images_the_district/category/' ~ categorie.image) }}"class="carte1" alt="{{ categorie.libelle }}" style="height:80%">
+                <p class="libellecard text-center">{{ categorie.libelle }}</p>
+              </a>
 </div>
+            {% endfor %}
+            </div>
+            </div>
+            </div>
 {% endblock %}

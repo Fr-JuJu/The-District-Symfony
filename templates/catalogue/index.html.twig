@@ -1,20 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CatalogueController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
+ <div class="container-fluid vvd g-0">
+            <nav class="navbar">        
+            <div class="row ">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2 col-2" type="search" id="recherche" placeholder="Rechercher" aria-label="Rechercher">
+            </form>
+          </div>
+        
+        </nav>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+          <div class="container-fluid">
+            <div class="row g-0">
+          <video src="{{ asset ('/img/VideoAcc.mp4/') }}" loop autoplay muted alt="video_pizza" title="Vidéo" class="object-fit-fill" id="imga">
+          </div>
+        </video>
+      </div>
+              
+          </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/juju/Bureau/MSDA/The-District/src/Controller/CatalogueController.php</code></li>
-        <li>Your template at <code>/home/juju/Bureau/MSDA/The-District/templates/catalogue/index.html.twig</code></li>
-    </ul>
+           <div class="container">
+  <div class="row">
+          {% for categorie in categories %}
+            <div class="col-sm-12 col-lg-4">
+            <a href="{{ path ('app_catplat', {categorie_id: categorie.id} ) }}">
+            <img src="{{ asset ('/img/images_the_district/category/' ~ categorie.image) }}"class="carte1" alt="{{ categorie.libelle }}" style="height:80%">
+                <p class="libellecard text-center">{{ categorie.libelle }}</p>
+              </a>
+              
+              </div>
+            {% endfor %}
+             <div class="page">
+        
+        <div class="para">
+
+
+        </div>
+<div class="platimg">
+          <div class="row">
+            <p class=" libelleplat fs-1 text-center fw-bolder text-decoration-underline text-black">Plat les plus vendus </p>
+            {% for plat in plats %}
+<div class="col-sm-12 col-lg-4">
+              <a href="#">
+                <img src="{{ asset ('/img/food/' ~ plat.image) }}"class="plat" alt="{{ plat.libelle }}" style="height:80%">
+              </a>
+              </div>
+              {% endfor %}
+            </div>
+            </div>
 </div>
+</div>
+</div>
+
 {% endblock %}

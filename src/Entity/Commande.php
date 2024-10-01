@@ -32,7 +32,7 @@ class Commande
     private Collection $details;
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
-    private ?user $utilisateur = null;
+    private ?User $utilisateur = null;
 
     public function __construct()
     {
