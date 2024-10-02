@@ -4,8 +4,11 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .borduree{
+      border: 10px solid black;
+      margin-left:0px;
+      margin-top:50px;
+    }
 </style>
  <div class="container-fluid vvd g-0">
             <nav class="navbar">        
@@ -22,11 +25,12 @@
           <video src="{{ asset ('/img/VideoAcc.mp4/') }}" loop autoplay muted alt="video_pizza" title="Vidéo" class="object-fit-fill" id="imga">
           </div>
         </video>
+<div class="borduree"></div> 
       </div>
               
           </div>
-
-           <div class="container">
+  <br><br>
+           <div class="container-fluid">
   <div class="row">
           {% for categorie in categories %}
             <div class="col-sm-12 col-lg-4">
@@ -37,19 +41,24 @@
               
               </div>
             {% endfor %}
+            <div class="borduree"></div> 
              <div class="page">
         
         <div class="para">
-
+<div class="bordureee"><img src="{{ asset ('/img/images_the_district/logo-removebg-preview.png/') }}" width="95%"></div> 
 
         </div>
+        <div class="borduree"></div> 
 <div class="platimg">
           <div class="row">
-            <p class=" libelleplat fs-1 text-center fw-bolder text-decoration-underline text-black">Plat les plus vendus </p>
+            <p class=" libelleplat fs-1 text-center fw-bold text-decoration-underline text-black mt-5">Plats</p>
             {% for plat in plats %}
-<div class="col-sm-12 col-lg-4">
+<div class="col-sm-12 col-lg-3">
               <a href="#">
+              <div class="image-container">
                 <img src="{{ asset ('/img/food/' ~ plat.image) }}"class="plat" alt="{{ plat.libelle }}" style="height:80%">
+                 <div class="description">{{ plat.description }} <br> <b>{{ plat.prix }}€</b> </div>
+                 </div>
               </a>
               </div>
               {% endfor %}
@@ -58,5 +67,4 @@
 </div>
 </div>
 </div>
-
 {% endblock %}
