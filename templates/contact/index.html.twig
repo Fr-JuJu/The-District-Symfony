@@ -3,69 +3,57 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-
-      <img src="{{ asset ('/img/images_the_district/bg1.jpeg/') }}" width="100%" height="350px">
-           <br>
-          <div class="container">
-            <div class="row">
-      <form class="row g-3 needs-validation" action="{{ path('app_contact') }}" method="post" novalidate>
-        <div class="col-4 col-md-6 ">
-          <label for="validationCustom01" class="form-label">Nom</label>
-          <input type="text" name="nom"class="form-control" id="validationCustom01" id="NomJS" required>
-          <div class="invalid-feedback">
-            Ce Champ est obligatoire.
-          </div>
-        </div>
-        <div class="col-4 col-md-6 ">
-          <label for="validationCustom02" class="form-label">Prénom</label>
-          <input type="text" name="prenom" class="form-control" id="validationCustom02" id="PrenomJS" required>
-          <div class="invalid-feedback">
-            Ce Champ est obligatoire.
-          </div>
-        </div>
+<img src="{{ asset ('/img/images_the_district/bg1.jpeg/') }}" width="100%" height="350px">
+<br>
+<div class="container">
+<div class="row">
+{{ form_start(form) }}
+            {{ form_label(form.nom) }}
+						  {{ form_widget(form.nom) }}
+                <div class="invalid-feedback">
+                    Ce Champ est obligatoire.
+                      </div>
+      <div class="col-4 col-md-6 ">
+            {{ form_label(form.prenom) }}
+						  {{ form_widget(form.prenom) }}
+                <div class="invalid-feedback">
+                    Ce Champ est obligatoire.
+                      </div>
+                         </div>
+       <div class="col-4 col-md-6 ">
+            {{ form_label(form.email) }}
+              {{ form_widget(form.email) }}
+                <div class="invalid-feedback">
+                    Ce Champ est obligatoire.
+                      </div>
+                          </div>
         <div class="col-4 col-md-6">
-          <label for="validationCustomUsername" class="form-label">Email</label>
-          <div class="input-group has-validation">
-            <input type="email" name="Email" class="form-control" id="validationCustomUsername" id="emailJS" aria-describedby="inputGroupPrepend" required>
-            
-            <div class="invalid-feedback">
-              Ce Champ est obligatoire.
-            </div>
-          </div>
-        </div>
-        <div class="col-4 col-md-6">
-          <label for="validationCustom03" class="form-label">Téléphone</label>
-          <input type="number" id="numberInput" oninput="limitCharacterLength(this, 10)" required pattern="[0-9]{10}" maxlength="10" step="any" name="tel" class="form-control" maxlength="10" id="validationCustom03" id="telephoneJS" required>
-          <div class="invalid-feedback">
-            Ce Champ est obligatoire.
-          </div>
-        </div>
+            {{ form_label(form.telephone) }}
+						  {{ form_widget(form.telephone) }}
+                 <div class="invalid-feedback">
+                    Ce Champ est obligatoire.
+                      </div>
+                          </div>
         <div class="col-6 col-md-12 ">
-            <label for="votreadresse" class="form-label">Votre demande</label>
-            <textarea class="form-control" name="demande" rows="3" id="votreadresseJS" required></textarea>
-          <div class="invalid-feedback">
-            Ce Champ est obligatoire.
-          </div>
-        </div>
+            {{ form_label(form.demande) }}
+						  {{ form_widget(form.demande) }}
+                 <div class="invalid-feedback">
+                    Ce Champ est obligatoire.
+                      </div>
+                          </div>
         <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-                Accepter les termes et conditions
-            </label>
+          {{ form_widget(form.check) }}
             <div class="invalid-feedback">
                 Ce Champ est obligatoire.
-            </div>
-          </div>
-        </div>
+                  </div>
+                    </div>
+              </div>
         <div class="terme col-12 d-flex justify-content-end"><a href="#"><h2>*Terme et condition</h2></a></div>
-        <div class="col-12 d-flex justify-content-end">
-          <button class="btn btn-dark" type="submit">Envoyer</button>
-        </div>
-      </form>
-    </div>
-    </div>
-    <br>
-    <script src="{{ asset('js/From.js') }}"></script>
+          <div class="col-12 d-flex justify-content-end">
+            {{ form_row(form.btn) }}
+              </div>
+    {{ form_end(form) }}
+        <script src="{{ asset('js/From.js') }}"></script>
+          
        
 {% endblock %}
