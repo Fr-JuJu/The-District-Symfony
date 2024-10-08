@@ -34,6 +34,27 @@ class Commande
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     private ?User $utilisateur = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $nom = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 20)]
+    private ?string $telephone = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $adresse_livraison = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $adresse_facturation = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $mode_paiement = null;
+
     public function __construct()
     {
         $this->details = new ArrayCollection();
@@ -118,6 +139,90 @@ class Commande
     public function setUtilisateur(?user $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(?string $prenom): static
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): static
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getAdresseLivraison(): ?string
+    {
+        return $this->adresse_livraison;
+    }
+
+    public function setAdresseLivraison(string $adresse_livraison): static
+    {
+        $this->adresse_livraison = $adresse_livraison;
+
+        return $this;
+    }
+
+    public function getAdresseFacturation(): ?string
+    {
+        return $this->adresse_facturation;
+    }
+
+    public function setAdresseFacturation(string $adresse_facturation): static
+    {
+        $this->adresse_facturation = $adresse_facturation;
+
+        return $this;
+    }
+
+    public function getModePaiement(): ?string
+    {
+        return $this->mode_paiement;
+    }
+
+    public function setModePaiement(string $mode_paiement): static
+    {
+        $this->mode_paiement = $mode_paiement;
 
         return $this;
     }

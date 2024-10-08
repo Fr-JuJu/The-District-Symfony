@@ -83,6 +83,15 @@ class CatalogueController extends AbstractController
         ]);
     }
 
+    #[Route('/terme', name: 'app_terme')]
+    public function terme(): Response
+    {
+        return $this->render('catalogue/terme.html.twig', [
+            'controller_name' => 'CatalogueController',
+        ]);
+    }
+
+
     #[Route('/panier', name: 'app_panier')]
     public function panier(): Response
     {

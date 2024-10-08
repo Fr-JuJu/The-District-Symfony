@@ -53,8 +53,8 @@
           <div class="row">
             <p class=" libelleplat fs-1 text-center fw-bold text-decoration-underline text-black mt-5">Plats</p>
             {% for plat in plats %}
-<div class="col-sm-12 col-lg-3">
-              <a href="#">
+<div class="col-sm-12 col-lg-3 mb-5 pb-5">
+              <a href="{{ path("app_ajout_panier", {id: plat.id})}}">
               <div class="image-container">
                 <img src="{{ asset ('/img/food/' ~ plat.image) }}"class="plat" alt="{{ plat.libelle }}" style="height:80%">
                  <div class="description">{{ plat.description }} <br> <b>{{ plat.prix }}€</b> </div>

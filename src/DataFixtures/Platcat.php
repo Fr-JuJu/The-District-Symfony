@@ -6,9 +6,18 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Plat;
 use App\Entity\Categorie;
+use App\Entity\User;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class Platcat extends Fixture
 {
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public function load(ObjectManager $manager): void
     {
         // $product = new Product();
@@ -402,6 +411,48 @@ $platFromagePlateau2->setImage("plateau-fromage-raclette-.jpg");
 $platFromagePlateau2->setActive("Yes");
 $platFromagePlateau2->setCategorie($categorieFromage);
 $manager->persist($platFromagePlateau2);
+
+$user1 = new User();
+$user1->setEmail("Missty@thedistrict.com");
+$user1->setPassword('Framboisine');
+
+$Password='Framboisine';
+$hashedPassword = $this->passwordHasher->hashPassword(
+    $user1,
+    $Password
+);
+
+$user1->setPassword($hashedPassword);
+$user1->setNom('Sueur');
+$user1->setPrenom('Missty');
+$user1->setCp('75017');
+$user1->setVille('Paris');
+$user1->setAdresse('28 rue de la souris');
+$user1->setTelephone('06 88 00 08 80');
+$user1->setRoles(['ROLE_ADMIN']);
+
+$manager->persist($user1);
+
+$user2 = new User();
+$user2->setEmail("Moi@thedistrict.com");
+$user2->setPassword('Framboisine123');
+
+$Password='Framboisine123';
+$hashedPassword = $this->passwordHasher->hashPassword(
+    $user2,
+    $Password
+);
+
+$user2->setPassword($hashedPassword);
+$user2->setNom('Sueur');
+$user2->setPrenom('Moi');
+$user2->setCp('75017');
+$user2->setVille('Paris');
+$user2->setAdresse('24 rue de la souris');
+$user2->setTelephone('06 88 00 08 80');
+$user2->setRoles(['ROLE_CHEF']);
+
+$manager->persist($user2);
 
         $manager->flush();
     }

@@ -31,13 +31,13 @@ class ContactController extends AbstractController
                 $entityManager->flush();
 
                 $email = (new Email())
-                ->from('thedistrict@laposte.fr')
+                ->from('Missty@thedistrict.com')
                 ->to('exemple@ex.com')
-                ->subject('Confirmation de contact')
+                ->subject('Re: Nous avons bien reçu votre contact')
                 ->text('Bonjour !
-                Nous avons bien reçu votre mail. Nous allons examiner votre demande et nous vous contacterons dans les plus brefs délais.
+                Nous avons bien reçu votre mail merci de patienter notre employer Missty vous répondra dans les plus bref délais
                 Cordialement,
-                l\'équipe The District.');
+                Missty de l\'équipe The District.');
 
                 try {
                     $mailer->send($email);

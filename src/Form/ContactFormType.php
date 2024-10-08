@@ -36,14 +36,13 @@ class ContactFormType extends AbstractType
                 'label' => 'email',
                 'required'=> true,
                 'attr' => ['id' => 'emailJS', 'id' => 'validationCustomUsername',
-                'class'=>'form-label','class'=>'form-control',
-                'class'=> 'input-group has-validation'],
+                'class'=>'form-label','class'=>'form-control'],
             ])
 
             ->add('telephone', TextType::class,[
                 'label' => 'telephone',
                 'required'=> true,
-                'attr' => ['id' => 'telephoneJS', 'id' => 'numberInput', 'id' => 'validationCustom03', 
+                'attr' => [ 
             'class'=>'form-label','class'=>'form-control'],
             ])
             ->add('demande', TextareaType::class,[

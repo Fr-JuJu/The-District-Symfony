@@ -1,20 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
+{% block title %}Panier{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<img src="{{ asset ('/img/images_the_district/bg1.jpeg/') }}" width="100%" height="350px">
+      <br><br><br>
+        <p class="text-center fs-1 fw-bold text-black text-decoration-underline">Votre Panier:</p>
+<div class="container">
+  <div class="row">
+{% set totalPrice = 0 %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+			{% for element in dataPanier %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/juju/Bureau/MSDA/The-District/src/Controller/PanierController.php</code></li>
-        <li>Your template at <code>/home/juju/Bureau/MSDA/The-District/templates/panier/index.html.twig</code></li>
-    </ul>
-</div>
+  <div class="col-sm-12 col-lg-3 mb-5 pb-5">
+              <div class="image-container">
+                <img src="{{ asset ('/img/food/' ~ element.plat.image) }}"class="plat" alt="{{ element.plat.libelle }}" style="height:80%">
+                 <div class="description">{{ element.plat.description }} <br> <b>{{ element.plat.prix }}€</b>
+                  <p class="text-white fs-5 fw-bold">Quantité : {{ element.quantite }}</p>
+              <a href="{{ path("app_ajout_panier", {id: element.plat.id}) }}" class="btn btn-primary" onclick="incrementQuantity()">+</a>
+            <a href="{{ path('app_enlever_panier', {id: element.plat.id}) }}" class="btn btn-primary" onclick="decrementQuantity()">-</a>
+
+              <b>Prix :
+									{{ element.plat.prix * element.quantite }}€</b>
+                  </div>
+                 </div>
+              </div>
+		{% set totalPrice = totalPrice + (element.plat.prix * element.quantite) %}
+
+			{% else %}
+        <p class="text-center fs-1 fw-bold text-black">Votre Panier est vide</p>
+
+{% endfor %}  
+                <p class="fs-3 fw-bold text-black ">
+								<b>Total :</b>
+							</p>
+							<p class="fs-3 fw-bold text-black">
+								<b>{{ totalPrice }}€</b>
+							</p>
+<div class="container">
+    <div class="row justify-content-center">
+                <a href="{{ path('app_commande') }}" class="btn btn-dark col-4 " type="submit">Commander</a>
+                <a href="{{ path('app_supprimer_tout_panier') }}" class="btn btn-dark col-4" type="submit">Vider le Panier</a>
+                </div>
+                </div>
 {% endblock %}

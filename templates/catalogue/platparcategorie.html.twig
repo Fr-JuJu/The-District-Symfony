@@ -17,9 +17,7 @@
                  <h5 class="card-title fs-2 text fw-semibold text-black text-decoration-underline">{{ plat.libelle }}</h5>
                   <p class="card-text fs-4 text text-black text-decoration-none"> {{ plat.description }}</p>
                    <p class="card-text fs-3 fw-semibold text-black">Prix :<p class="fs-3 fw-semibold text-black"> {{ plat.prix }} €</p></p>
-                      <form action="commande.php" methode="GET">
-                      <button type="submit" name="bouton" class="btn js-4" value="'.$row['id'].'" >Commander </button>
-                      </form>
+                      <a href="{{ path("app_ajout_panier", {id: plat.id})}}" type="submit" name="bouton" class="btn js-4"  >Commander </a>
 
                 
               </a>
