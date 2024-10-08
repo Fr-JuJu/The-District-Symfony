@@ -58,6 +58,14 @@
                   </div>
                     </div>
               </div>
+
+          <div class="paiement col-6">
+          {{ form_widget(form.mode_paiement)}}
+          <div class="invalid-feedback">
+                Ce Champ est obligatoire.
+                  </div>
+          </div>
+<br> <br>
           <div class="col-6 d-flex justify-content-end">
             {{ form_row(form.btn) }}
               </div>

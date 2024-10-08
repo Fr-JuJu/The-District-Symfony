@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Regex;
+
 
 class ContactFormType extends AbstractType
 {
@@ -23,7 +25,12 @@ class ContactFormType extends AbstractType
                 'label' => 'nom',
                 'required'=> true,
                 'attr' => ['id' => 'NomJS', 'id' => 'validationCustom01',
-                'class'=>'row g-3 needs-validation', 'class'=>'form-label','class'=>'form-control']
+                'class'=>'row g-3 needs-validation', 'class'=>'form-label','class'=>'form-control'],
+                'constraints'=> new Regex([
+                    'pattern' => '[a-z]',
+                    'match' => true,
+                    'message' => 'Entrer un numéro valide'
+                ])
             ])
             ->add('prenom', TextType::class,[
                 'label' => 'prenom',
@@ -44,6 +51,11 @@ class ContactFormType extends AbstractType
                 'required'=> true,
                 'attr' => [ 
             'class'=>'form-label','class'=>'form-control'],
+                'constraints'=> new Regex([
+                    'pattern' => '[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$',
+                    'match' => true,
+                    'message' => 'Entrer un numéro valide'
+                ])
             ])
             ->add('demande', TextareaType::class,[
                 'label' => 'demande',
